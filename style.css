@@ -1026,7 +1026,6 @@ body.role-recepcao #page-navigation {
         margin: 0;
     }
 
-    /* --- AJUSTE POSICIONAMENTO E ESTILO ÍCONE HORÁRIOS --- */
     #horarios-icon {
         position: static;
         transform: none;
@@ -1065,11 +1064,16 @@ body.role-recepcao #page-navigation {
     }
     
     .plantao-selector,
-    #filter-container,
-    .view-switcher {
+    #filter-container {
         flex-direction: column;
         width: 100%;
         gap: 0.5rem;
+    }
+    
+    /* --- NOVO: Centraliza os botões no mobile para corretores --- */
+    body.role-corretor .view-switcher,
+    body.role-corretores .view-switcher {
+        justify-content: center;
     }
     
     .date-navigator-daily {
