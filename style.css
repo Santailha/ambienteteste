@@ -44,10 +44,6 @@ header {
     gap: 0.5rem;
 }
 
-#logout-btn {
-   display: none;
-}
-
 .header-actions {
     position: absolute;
     top: 1rem;
@@ -57,22 +53,22 @@ header {
     gap: 15px;
 }
 
-/* --- NOVO ESTILO REFINADO PARA O BOTÃO SAIR --- */
-.header-actions #logout-btn {
+/* --- ESTILO DO BOTÃO SAIR COMO ÍCONE --- */
+#logout-btn {
     display: inline-block;
     position: static;
     background-color: transparent;
     color: var(--branco);
-    font-weight: 500;
-    border: 2px solid var(--branco);
-    padding: 8px 18px;
-    border-radius: 6px;
+    border: none;
+    padding: 0;
     cursor: pointer;
-    transition: all 0.3s ease;
+    font-size: 2rem; /* Tamanho do ícone */
+    line-height: 1;
+    transition: all 0.2s ease;
 }
-.header-actions #logout-btn:hover {
-    background-color: var(--branco);
-    color: var(--azul-santailha);
+#logout-btn:hover {
+    transform: scale(1.2);
+    color: var(--amarelo-santailha);
 }
 
 
@@ -1066,9 +1062,8 @@ body.role-recepcao #page-navigation {
         right: 1rem;
     }
     
-    .header-actions #logout-btn {
-        padding: 5px 10px;
-        font-size: 0.8rem;
+    #logout-btn {
+        font-size: 1.8rem; /* Ajuste do ícone para mobile */
     }
     
     #dashboard-icon, #logs-icon {
