@@ -85,6 +85,20 @@ function initializeApp(user, userRole) {
         }
     }
 
+    // --- NOVA LÓGICA: Define a visualização padrão para corretores ---
+    if ((userRole === 'corretor' || userRole === 'corretores') && !isMobile) {
+        activeView = 'weekly';
+        monthlyView.style.display = 'none';
+        dailyView.style.display = 'none';
+        weeklyView.style.display = 'block';
+        monthlyNav.style.display = 'none';
+        dailyNav.style.display = 'flex';
+
+        viewWeeklyBtn.classList.add('active');
+        viewMonthlyBtn.classList.remove('active');
+        viewDailyBtn.classList.remove('active');
+    }
+
     if (isMobile) {
         activeView = 'daily';
         monthlyView.style.display = 'none';
@@ -765,4 +779,6 @@ function initializeApp(user, userRole) {
         await loadPlantoes();
     }
     start();
+}
+
 }
