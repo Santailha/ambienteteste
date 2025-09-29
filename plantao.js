@@ -113,6 +113,20 @@ function initializeApp(user, userRole) {
         if(viewMonthlyBtn) {
             viewMonthlyBtn.style.display = 'none';
         }
+
+        // --- NOVA LÓGICA PARA MOBILE DE CORRETORES ---
+        if (userRole === 'corretor' || userRole === 'corretores') {
+            const plantaoSelectorSection = document.querySelector('.plantao-selector');
+            if (plantaoSelectorSection) {
+                // Oculta a seção inteira de "Selecione o Plantão"
+                plantaoSelectorSection.parentElement.style.display = 'none';
+            }
+            const pageTitleH1 = document.querySelector('.title-container h1');
+            if(pageTitleH1) {
+                // Oculta apenas o texto "Plantões", mantendo o relógio
+                pageTitleH1.style.display = 'none';
+            }
+        }
     }
 
     async function addLog(action, details) {
