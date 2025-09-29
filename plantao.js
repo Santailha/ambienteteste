@@ -99,22 +99,33 @@ function initializeApp(user, userRole) {
     }
 
     if (isMobile) {
-        activeView = 'daily';
+        // --- LÓGICA MOBILE ATUALIZADA ---
+        const isCorretor = userRole === 'corretor' || userRole === 'corretores';
+        
+        // Define a visualização padrão: Semanal para corretores, Diária para outros
+        activeView = isCorretor ? 'weekly' : 'daily';
+
         monthlyView.style.display = 'none';
-        dailyView.style.display = 'block';
-        weeklyView.style.display = 'none';
+        dailyView.style.display = isCorretor ? 'none' : 'block';
+        weeklyView.style.display = isCorretor ? 'block' : 'none';
         monthlyNav.style.display = 'none';
         dailyNav.style.display = 'flex';
-
-        viewDailyBtn.classList.add('active');
+        
+        // Ativa o botão correto
+        if (isCorretor) {
+            viewWeeklyBtn.classList.add('active');
+            viewDailyBtn.classList.remove('active');
+        } else {
+            viewDailyBtn.classList.add('active');
+            viewWeeklyBtn.classList.remove('active');
+        }
         viewMonthlyBtn.classList.remove('active');
-        viewWeeklyBtn.classList.remove('active');
         
         if(viewMonthlyBtn) {
             viewMonthlyBtn.style.display = 'none';
         }
 
-        if (userRole === 'corretor' || userRole === 'corretores') {
+        if (isCorretor) {
             const plantaoSelectorSection = document.querySelector('.plantao-selector');
             if (plantaoSelectorSection) {
                 plantaoSelectorSection.parentElement.style.display = 'none';
@@ -124,12 +135,11 @@ function initializeApp(user, userRole) {
                 pageTitleH1.style.display = 'none';
             }
 
-            // --- NOVO: Move o ícone de horários para junto dos outros botões ---
             const horariosIcon = document.getElementById('horarios-icon');
             const viewSwitcher = document.querySelector('.view-switcher');
             if (horariosIcon && viewSwitcher) {
-                horariosIcon.classList.add('view-btn'); // Adiciona a classe para estilização
-                viewSwitcher.appendChild(horariosIcon); // Move o elemento
+                horariosIcon.classList.add('view-btn'); 
+                viewSwitcher.appendChild(horariosIcon); 
             }
         }
     }
