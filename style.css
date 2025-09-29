@@ -11,54 +11,42 @@ body {
     font-family: system-ui, sans-serif;
     background-color: var(--fundo-geral);
     margin: 0;
-    display: none; 
+    display: none;
 }
 
 .logo {
-    max-width: 200px;
-    margin-bottom: 1rem;
+    max-width: 180px; /* Reduzido para caber na linha */
+    margin-bottom: 0; /* Removida a margem inferior */
+    max-height: 50px; /* Definida uma altura máxima */
 }
 
 header {
     background-color: var(--azul-santailha);
     color: var(--branco);
-    padding: 1rem 1.5rem;
+    padding: 0.5rem 1.5rem; /* Padding vertical reduzido */
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     display: flex;
-    justify-content: center;
+    justify-content: space-between; /* Alinhamento alterado */
     align-items: center;
-    position: relative; /* Essencial para o posicionamento do botão */
 }
 
 .header-content {
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* Alterado para linha */
     align-items: center;
+    gap: 1.5rem; /* Espaçamento entre logo, título, etc. */
 }
 
-/* Novo container para o título */
 .title-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem; /* Espaço entre o título e o ícone */
+    gap: 0.5rem;
 }
 
+/* Oculta o botão de logout principal, pois ele está dentro das ações agora */
 #logout-btn {
-    position: absolute;
-    top: 1rem;
-    right: 1.5rem;
-    background-color: #f44336;
-    color: white;
-    font-weight: bold;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-#logout-btn:hover {
-    background-color: #d32f2f;
+    display: none;
 }
 
 #month-navigation {
@@ -66,7 +54,7 @@ header {
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    margin-top: 1rem;
+    margin-top: 0; /* Margem removida */
 }
 
 #month-navigation h2 {
@@ -830,16 +818,19 @@ body.role-corretor .calendar-day[data-day]:hover {
 /* --- ESTILOS PARA ÍCONES E BOTÕES NO HEADER --- */
 
 .header-actions {
-    position: absolute;
-    top: 1rem;
-    right: 1.5rem;
     display: flex;
     align-items: center;
     gap: 15px;
 }
 
-.header-actions #logout-btn {
-    position: static;
+.header-actions #logout-btn-action { /* Nome diferente para o botão de logout real */
+    background-color: #f44336;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
 #dashboard-icon, #logs-icon {
@@ -873,9 +864,6 @@ body.role-corretor .calendar-day[data-day]:hover {
 }
 
 #back-button {
-    position: absolute;
-    top: 1rem;
-    right: 1.5rem;
     font-size: 2.5rem;
     color: var(--branco);
     text-decoration: none;
@@ -981,51 +969,27 @@ body.role-recepcao #page-navigation {
 
     /* === HEADER === */
     header {
-        position: relative;
-        padding: 0.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center; /* Centraliza o .header-content */
+        padding: 0.5rem 1rem;
     }
 
-    .header-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    
     .header-content .logo {
-        max-width: 140px;
-        margin-bottom: 0.25rem;
+        max-width: 120px;
     }
 
     .title-container h1 {
-        font-size: 1.3rem;
-        margin: 0;
-    }
-
-    #horarios-icon,
-    .header-actions {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
+        font-size: 1.1rem;
     }
 
     #horarios-icon {
-        left: 1rem; /* Posiciona no canto esquerdo */
+        font-size: 1.5rem;
     }
     
-    .header-actions {
-        right: 1rem; /* Posiciona no canto direito */
-    }
-    
-    #logout-btn {
-        position: static;
-        padding: 5px 10px; /* Botão menor */
+    .header-actions #logout-btn-action {
+        padding: 5px 10px;
         font-size: 0.8rem;
     }
     
-    #dashboard-icon, #logs-icon {
+    #dashboard-icon, #logs-icon, #back-button {
         display: none;
     }
     
