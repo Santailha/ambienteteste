@@ -28,7 +28,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative; /* Essencial para o posicionamento dos botões de ação */
+    position: relative;
 }
 
 .header-content {
@@ -44,12 +44,10 @@ header {
     gap: 0.5rem;
 }
 
-/* Ocultamos o botão antigo para evitar duplicatas */
 #logout-btn {
    display: none;
 }
 
-/* Container para os botões de ação no canto superior direito */
 .header-actions {
     position: absolute;
     top: 1rem;
@@ -59,9 +57,8 @@ header {
     gap: 15px;
 }
 
-/* Estilo do botão Sair dentro do container de ações */
 .header-actions #logout-btn {
-    display: inline-block; /* Garante que o botão seja visível */
+    display: inline-block;
     position: static;
     background-color: #f44336;
     color: white;
@@ -84,7 +81,9 @@ header {
     margin-top: 1rem;
 }
 
-/* ESTILO COMPACTO DO HEADER APENAS PARA CORRETORES */
+/* --- ESTILOS ESPECÍFICOS PARA CORRETORES --- */
+
+/* 1. Deixa o header compacto e em linha */
 body.role-corretor header,
 body.role-corretores header {
     padding: 0.5rem 1.5rem;
@@ -95,6 +94,8 @@ body.role-corretor .header-content,
 body.role-corretores .header-content {
     flex-direction: row;
     gap: 1.5rem;
+    flex-grow: 1; /* Permite que o container cresça */
+    justify-content: center; /* Centraliza o conteúdo (título e relógio) */
 }
 
 body.role-corretor .logo,
@@ -106,12 +107,21 @@ body.role-corretores .logo {
 
 body.role-corretor .header-actions,
 body.role-corretores .header-actions {
-    position: static; /* Remove o posicionamento absoluto para o layout de linha */
+    position: static;
 }
 
+/* 2. Oculta o link para a Distribuição de Leads e o ícone de Logs */
 body.role-corretor #month-navigation,
-body.role-corretores #month-navigation {
-    margin-top: 0;
+body.role-corretores #month-navigation,
+body.role-corretor #logs-icon,
+body.role-corretores #logs-icon {
+    display: none;
+}
+
+/* 3. Ajusta o título para "Plantões" (isso é feito no JS, mas garantimos o alinhamento aqui) */
+body.role-corretor .title-container h1,
+body.role-corretores .title-container h1 {
+    margin: 0;
 }
 
 
@@ -615,12 +625,10 @@ main {
 
 /* --- Estilos para o Dropdown de Plantão Customizado --- */
 
-/* 1. Prepara o container para a seta customizada */
 .plantao-selector {
-    position: relative; /* Necessário para posicionar a seta */
+    position: relative;
 }
 
-/* 2. Estiliza o <select> principal */
 #plantao-select {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -636,14 +644,12 @@ main {
     transition: all 0.2s ease-in-out;
 }
 
-/* 3. Estiliza o foco do select */
 #plantao-select:focus {
     outline: none;
     border-color: var(--azul-santailha);
     box-shadow: 0 0 0 3px rgba(49, 39, 130, 0.2);
 }
 
-/* 4. Cria a seta customizada usando um pseudo-elemento */
 .plantao-selector::after {
     content: '▼';
     font-size: 12px;
@@ -745,7 +751,7 @@ body.role-corretor .calendar-day[data-day]:hover {
 }
 
 .weekly-day-card {
-    flex: 0 0 280px; /* Base de 280px, não cresce, não encolhe */
+    flex: 0 0 280px;
     background-color: var(--branco);
     border-radius: 12px;
     padding: 1rem;
@@ -867,7 +873,7 @@ body.role-corretor .calendar-day[data-day]:hover {
 .form-group-checkbox input[type="checkbox"]:checked + label::before {
     background-color: var(--azul-santailha);
     border-color: var(--azul-santailha);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
     background-size: 14px;
     background-position: center;
     background-repeat: no-repeat;
@@ -1006,7 +1012,7 @@ body.role-recepcao #page-navigation {
 }
 
 
-/* --- 🌟 --- ESTILOS PARA UMA SUPER RESPONSIVIDADE --- 🌟 --- */
+/* --- 🌟 --- ESTILOS RESPONSIVOS --- 🌟 --- */
 @media (max-width: 800px) {
     main {
         padding: 1rem;
@@ -1018,7 +1024,7 @@ body.role-recepcao #page-navigation {
         padding: 0.5rem;
         display: flex;
         align-items: center;
-        justify-content: center; /* Centraliza o .header-content */
+        justify-content: center;
     }
 
     .header-content {
@@ -1045,15 +1051,15 @@ body.role-recepcao #page-navigation {
     }
 
     #horarios-icon {
-        left: 1rem; /* Posiciona no canto esquerdo */
+        left: 1rem;
     }
     
     .header-actions {
-        right: 1rem; /* Posiciona no canto direito */
+        right: 1rem;
     }
     
     .header-actions #logout-btn {
-        padding: 5px 10px; /* Botão menor */
+        padding: 5px 10px;
         font-size: 0.8rem;
     }
     
@@ -1084,7 +1090,7 @@ body.role-recepcao #page-navigation {
     .date-navigator-daily {
         flex-direction: row;
         justify-content: center;
-        align-items: center; /* Garante alinhamento vertical */
+        align-items: center;
     }
 
     #plantao-select,
@@ -1126,18 +1132,18 @@ body.role-recepcao #page-navigation {
     .date-navigator-daily button {
         width: 40px;
         height: 40px;
-        min-width: 40px; /* Garante que o botão não seja espremido */
+        min-width: 40px;
         padding: 0;
-        line-height: 1; /* Alinhamento da seta */
+        line-height: 1;
     }
 
     .plantao-selector {
         display: none;
     }
 }
-/* ... (todo o seu CSS existente) ... */
 
-/* --- NOVOS ESTILOS PARA ORDENAÇÃO MANUAL NA VIEW DIÁRIA --- */
+
+/* --- ORDENAÇÃO MANUAL NA VIEW DIÁRIA --- */
 
 .daily-plantao-card h3 {
     display: flex;
