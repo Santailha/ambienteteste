@@ -625,7 +625,6 @@ main {
 .daily-shift strong {
     color: var(--texto-principal);
 }
-/* Adicione este bloco ao final do seu style.css */
 
 /* --- Estilos para o Dropdown de Plantão Customizado --- */
 
@@ -746,16 +745,17 @@ body.role-corretor .calendar-day[data-day]:hover {
     margin-bottom: 1rem;
 }
 
+/* Alteração: removido overflow-x e scrollbar-width */
 #weekly-grid {
     display: flex;
-    overflow-x: auto;
     gap: 1rem;
     padding: 0.5rem;
-    scrollbar-width: thin;
 }
 
+/* Alteração: flex alterado para distribuir o espaço */
 .weekly-day-card {
-    flex: 0 0 280px;
+    flex: 1 1 0;
+    min-width: 120px;
     background-color: var(--branco);
     border-radius: 12px;
     padding: 1rem;
@@ -1185,4 +1185,6 @@ body.role-recepcao #page-navigation {
     background-color: transparent;
     border-color: var(--borda-suave);
     transform: none;
+}
+
 }
