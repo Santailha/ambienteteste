@@ -731,7 +731,6 @@ body.role-corretor .calendar-day[data-day]:hover {
     cursor: pointer;
 }
 
-/* --- ESTILOS VISUALIZAÇÃO SEMANAL (DESKTOP) --- */
 .weekly-header {
     text-align: center;
     margin-bottom: 1rem;
@@ -744,8 +743,8 @@ body.role-corretor .calendar-day[data-day]:hover {
 }
 
 .weekly-day-card {
-    flex: 1 1 0; /* Distribui o espaço igualmente */
-    min-width: 120px; /* Largura mínima para evitar quebra de layout */
+    flex: 1 1 0;
+    min-width: 120px;
     background-color: var(--branco);
     border-radius: 12px;
     padding: 1rem;
@@ -1003,7 +1002,6 @@ body.role-recepcao #page-navigation {
         padding: 1rem;
     }
 
-    /* === HEADER === */
     header {
         position: relative;
         padding: 0.5rem;
@@ -1028,18 +1026,22 @@ body.role-recepcao #page-navigation {
         margin: 0;
     }
 
-    #horarios-icon,
+    /* --- AJUSTE POSICIONAMENTO E ESTILO ÍCONE HORÁRIOS --- */
+    #horarios-icon {
+        position: static;
+        transform: none;
+        padding: 8px 12px;
+        border-radius: 6px;
+    }
+
+    #horarios-icon.view-btn {
+        background-color: transparent;
+    }
+
     .header-actions {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-    }
-
-    #horarios-icon {
-        left: 1rem;
-    }
-    
-    .header-actions {
         right: 1rem;
     }
     
@@ -1055,7 +1057,6 @@ body.role-recepcao #page-navigation {
         display: none;
     }
 
-    /* === CONTROLS & CALENDAR === */
     .controls-bar {
         flex-direction: column;
         gap: 1.5rem;
@@ -1125,19 +1126,15 @@ body.role-recepcao #page-navigation {
         display: none;
     }
 
-    /* === AJUSTE VISUALIZAÇÃO SEMANAL MOBILE === */
     #weekly-grid {
-        overflow-x: auto; /* Permite a rolagem lateral */
+        overflow-x: auto;
         scrollbar-width: thin;
     }
 
     .weekly-day-card {
-        flex: 0 0 280px; /* Define um tamanho fixo para os cards */
+        flex: 0 0 280px;
     }
 }
-
-
-/* --- ORDENAÇÃO MANUAL NA VIEW DIÁRIA --- */
 
 .daily-plantao-card h3 {
     display: flex;
