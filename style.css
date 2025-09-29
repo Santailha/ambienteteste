@@ -57,19 +57,22 @@ header {
     gap: 15px;
 }
 
+/* --- NOVO ESTILO REFINADO PARA O BOTÃO SAIR --- */
 .header-actions #logout-btn {
     display: inline-block;
     position: static;
-    background-color: #f44336;
-    color: white;
-    font-weight: bold;
-    border: none;
-    padding: 10px 20px;
+    background-color: transparent;
+    color: var(--branco);
+    font-weight: 500;
+    border: 2px solid var(--branco);
+    padding: 8px 18px;
     border-radius: 6px;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 .header-actions #logout-btn:hover {
-    background-color: #d32f2f;
+    background-color: var(--branco);
+    color: var(--azul-santailha);
 }
 
 
@@ -83,20 +86,27 @@ header {
 
 /* --- ESTILOS ESPECÍFICOS PARA CORRETORES --- */
 
-/* 1. Deixa o header compacto e em linha */
 body.role-corretor header,
 body.role-corretores header {
     padding: 0.5rem 1.5rem;
     justify-content: space-between;
+    position: relative;
 }
 
 body.role-corretor .header-content,
 body.role-corretores .header-content {
     flex-direction: row;
     gap: 1.5rem;
-    flex-grow: 1; /* Permite que o container cresça */
-    justify-content: center; /* Centraliza o conteúdo (título e relógio) */
+    align-items: center;
 }
+
+body.role-corretor .title-container,
+body.role-corretores .title-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 
 body.role-corretor .logo,
 body.role-corretores .logo {
@@ -110,7 +120,6 @@ body.role-corretores .header-actions {
     position: static;
 }
 
-/* 2. Oculta o link para a Distribuição de Leads e o ícone de Logs */
 body.role-corretor #month-navigation,
 body.role-corretores #month-navigation,
 body.role-corretor #logs-icon,
@@ -118,7 +127,6 @@ body.role-corretores #logs-icon {
     display: none;
 }
 
-/* 3. Ajusta o título para "Plantões" (isso é feito no JS, mas garantimos o alinhamento aqui) */
 body.role-corretor .title-container h1,
 body.role-corretores .title-container h1 {
     margin: 0;
