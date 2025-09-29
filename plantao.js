@@ -114,17 +114,22 @@ function initializeApp(user, userRole) {
             viewMonthlyBtn.style.display = 'none';
         }
 
-        // --- NOVA LÓGICA PARA MOBILE DE CORRETORES ---
         if (userRole === 'corretor' || userRole === 'corretores') {
             const plantaoSelectorSection = document.querySelector('.plantao-selector');
             if (plantaoSelectorSection) {
-                // Oculta a seção inteira de "Selecione o Plantão"
                 plantaoSelectorSection.parentElement.style.display = 'none';
             }
             const pageTitleH1 = document.querySelector('.title-container h1');
             if(pageTitleH1) {
-                // Oculta apenas o texto "Plantões", mantendo o relógio
                 pageTitleH1.style.display = 'none';
+            }
+
+            // --- NOVO: Move o ícone de horários para junto dos outros botões ---
+            const horariosIcon = document.getElementById('horarios-icon');
+            const viewSwitcher = document.querySelector('.view-switcher');
+            if (horariosIcon && viewSwitcher) {
+                horariosIcon.classList.add('view-btn'); // Adiciona a classe para estilização
+                viewSwitcher.appendChild(horariosIcon); // Move o elemento
             }
         }
     }
