@@ -85,7 +85,6 @@ function initializeApp(user, userRole) {
         }
     }
 
-    // --- NOVA LÓGICA: Define a visualização padrão para corretores ---
     if ((userRole === 'corretor' || userRole === 'corretores') && !isMobile) {
         activeView = 'weekly';
         monthlyView.style.display = 'none';
@@ -779,6 +778,4 @@ function initializeApp(user, userRole) {
         await loadPlantoes();
     }
     start();
-}
-
 }
